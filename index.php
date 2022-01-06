@@ -2,6 +2,8 @@
 	include 'functions.php';// incluir o arquivo de funções
 	$platform = 'pc';// definir a plataforma
 	$epicNickname = 'Ninja';// definir o nome de usuário
+	/*$epic = 'Ninja';// definir o nome de usuário
+	$region = 'NAE';// definir a região*/
 	$playerStats = getPlayerStats( $platform, $epicNickname );// chamar a função para pegar as estatísticas do jogador
 ?>
 <!DOCTYPE html>
@@ -25,9 +27,9 @@
 	</head>
 	<body>
 		<div style="margin-bottom:20px;font-size:48px">
-			<div>Fortnite Player Stats</div>
+			<div>Fortnite: Estatísticas do jogador</div>
 			<div style="font-size:28px;">
-				Player <?php echo $epicNickname; ?> on <?php echo $platform; ?>
+				Jogador <?php echo $epicNickname; ?> no <?php echo $platform; ?>
 			</div>
 		</div>
 		<div style="width:100%;color:#000;background:#f1ed62;font-size:26px;display:inline-block">
@@ -113,7 +115,7 @@
 		</ul>
 		<div style="width:100%;color:#000;background:#f1ed62;font-size:26px;display:inline-block">
 			<div style="padding:5px">
-				<div style="float:left">SQUADS</div>
+				<div style="float:left">Squads</div>
 			</div>
 		</div>
 		<ul style="list-style: none;padding:0px;margin:0px;margin:0px;margin-bottom:20px">
