@@ -72,7 +72,7 @@
 							</div>
 							<div style="font-size:18px">
 								<?php if ( isset( $stat['rank'] ) ) : ?>
-									#<?php echo number_format( $stat['rank'] ); ?>
+									<?php echo number_format( $stat['rank'] ); ?>
 								<?php else : ?>
 									-
 								<?php endif; ?>
