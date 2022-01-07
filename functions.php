@@ -13,8 +13,8 @@
 		curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, FALSE );// Não verificar o certificado SSL
 		$response = curl_exec( $ch );// Executar a requisição
 		curl_close( $ch );// Fechar a conexão
-		echo "<pre>";
+		/*echo "<pre>";
         var_dump(json_decode($response));
-        echo "</pre>";
+        echo "</pre>";*/
 		return json_decode( $response, true );// Retornar o resultado
 	}
