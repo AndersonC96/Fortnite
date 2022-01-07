@@ -144,5 +144,67 @@
 				<?php endif; ?>
 			<?php endforeach; ?>
 		</ul>
+		<div style="width:100%;color:#000;background:#f1ed62;font-size:26px;display:inline-block">
+			<div style="padding:5px">
+				<div style="float:left">LTM</div>
+			</div>
+		</div>
+		<ul style="list-style: none;padding:0px;margin:0px;margin:0px;margin-bottom:20px">
+			<?php foreach ( $playerStats['stats']['ltm'] as $stat ) : ?>
+				<?php if ( $stat['value'] ) : ?>
+					<li style="display:inline-block;border:1px solid #363636;padding:10px;margin-left:10px;margin-top:10px">
+						<div>
+							<div style="color:#9a9a9a;font-size: 16px;">
+								<?php echo $stat['label']; ?>
+							</div>
+							<div style="font-size:22px">
+								<?php echo $stat['displayValue']; ?>
+							</div>
+							<div style="color:#9a9a9a;font-size:14px;margin-top:5px;">
+								Rank
+							</div>
+							<div style="font-size:18px">
+								<?php if ( isset( $stat['rank'] ) ) : ?>
+									#<?php echo number_format( $stat['rank'] ); ?>
+								<?php else : ?>
+									-
+								<?php endif; ?>
+							</div>
+						</div>
+					</li>
+				<?php endif; ?>
+			<?php endforeach; ?>
+		</ul>
+		<div style="width:100%;color:#000;background:#f1ed62;font-size:26px;display:inline-block">
+			<div style="padding:5px">
+				<div style="float:left">Trios</div>
+			</div>
+		</div>
+		<ul style="list-style: none;padding:0px;margin:0px;margin:0px;margin-bottom:20px">
+			<?php foreach ( $playerStats['stats']['trios'] as $stat ) : ?>
+				<?php if ( $stat['value'] ) : ?>
+					<li style="display:inline-block;border:1px solid #363636;padding:10px;margin-left:10px;margin-top:10px">
+						<div>
+							<div style="color:#9a9a9a;font-size: 16px;">
+								<?php echo $stat['label']; ?>
+							</div>
+							<div style="font-size:22px">
+								<?php echo $stat['displayValue']; ?>
+							</div>
+							<div style="color:#9a9a9a;font-size:14px;margin-top:5px;">
+								Rank
+							</div>
+							<div style="font-size:18px">
+								<?php if ( isset( $stat['rank'] ) ) : ?>
+									#<?php echo number_format( $stat['rank'] ); ?>
+								<?php else : ?>
+									-
+								<?php endif; ?>
+							</div>
+						</div>
+					</li>
+				<?php endif; ?>
+			<?php endforeach; ?>
+		</ul>
 	</body>
 </html>
