@@ -46,9 +46,6 @@
                         <a class="nav-link" href="cosmeticos.php">Cosméticos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="playlists.php">Playlists</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="loja.php">Loja</a>
                     </li>
                     <li class="nav-item">
