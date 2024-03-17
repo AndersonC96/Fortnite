@@ -12,3 +12,18 @@ body{
 .container h1{
     color: #f9a602;
 }
+.video-background{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1000;
+    overflow: hidden;
+}
+.video-background video{
+    min-width: 100vw;
+    min-height: 100vh;
+}
