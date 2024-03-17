@@ -61,3 +61,25 @@ body{
     line-height: 1.5;
     text-align: justify;
 }
+.card{
+    margin-bottom: 20px;
+}
+.card-body h5.card-title{
+    color: #f9a602;
+}
+.card-body p.card-text{
+    color: #0e101c;
+}
+.card{
+    display: flex;
+    flex-direction: column;
+}
+.card-body{
+    flex: 1;
+}
+@media(min-width: 768px){
+    .col-md-6{
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
