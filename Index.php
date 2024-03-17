@@ -24,14 +24,14 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="index.php">Home</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="noticias.php">Notícias</a>
+                    </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="cosmeticos.php">Cosméticos</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="mapa.php">Mapa</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="noticias.php">Notícias</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="playlists.php">Playlists</a>
