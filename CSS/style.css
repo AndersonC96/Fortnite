@@ -1,0 +1,14 @@
+body{
+    font-family: 'Bangers', cursive;
+    background-color: #0e101c;
+    color: #ffffff;
+}
+.navbar-dark .navbar-brand, .navbar-dark .nav-link{
+    color: #f9a602 !important;
+}
+.navbar-dark .nav-link:hover{
+    color: #ffd700 !important;
+}
+.container h1{
+    color: #f9a602;
+}
