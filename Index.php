@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Fortnite API</title>
+        <link rel="icon" href="./IMG/favicon.png" type="image/x-icon" />
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
         <link href="./CSS/style.css" rel="stylesheet">
@@ -15,7 +16,10 @@
             </video>
         </div>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">Sistema Fortnite</a>
+            <!--<a class="navbar-brand" href="#">Sistema Fortnite</a>-->
+            <a class="navbar-brand" href="index.php">
+                <img src="./IMG/logo.png" alt="Logo do Fortnite">
+            </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -24,8 +28,14 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="index.php">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="noticias.php">Notícias</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Notícias</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="noticias.php">Notícias Gerais</a>
+                            <a class="dropdown-item" href="noticias_br.php">Notícias BR</a>
+                            <a class="dropdown-item" href="noticias_stw.php">Notícias STW</a>
+                            <a class="dropdown-item" href="noticias_creative.php">Notícias Creative</a>
+                        </div>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="cosmeticos.php">Cosméticos</a>
@@ -48,13 +58,6 @@
                 </ul>
             </div>
         </nav>
-        <!--<div class="container mt-4">
-            <h1>Bem-vindo ao Sistema Fortnite</h1>
-            <p>Selecione uma opção no menu para começar.</p>
-        </div>-->
-        <!--<div class="youtube-container">
-            <iframe src="https://www.youtube.com/watch?v=bz0BtZ4hyaM" frameborder="0" allowfullscreen></iframe>
-        </div>-->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
