@@ -1,5 +1,13 @@
 <?php
     include 'apiConfig.php';
+    $searchQuery = $_GET['query'] ?? '';
+    $cosmeticsData = [];
+    if(!empty($searchQuery)){
+        $url = "https://fortnite-api.com/v2/cosmetics/br/search?name=" . urlencode($searchQuery);
+        $cosmeticsData = callFortniteAPI($url);
+    }else{
+        $cosmeticsData = callFortniteAPI('cosmetics/br/new');
+    }
 ?>
 <!DOCTYPE html>
 <html lang="pt">
@@ -52,6 +60,10 @@
                     <li class="nav-item">
                         <a class="nav-link" href="plataformas.php">Plataformas</a>
                     </li>
+                    <form class="form-inline my-2 my-lg-0 ml-auto" action="cosmeticos.php" method="GET">
+                        <input class="form-control mr-sm-2" type="search" name="query" placeholder="Buscar Cosmético" aria-label="Buscar">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="background-color: #f99900; border-color: #f99900; color: white;">Buscar</button>
+                    </form>
                 </ul>
             </div>
         </nav>
