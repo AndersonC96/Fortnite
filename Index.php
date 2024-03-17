@@ -16,7 +16,6 @@
             </video>
         </div>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <!--<a class="navbar-brand" href="#">Sistema Fortnite</a>-->
             <a class="navbar-brand" href="index.php">
                 <img src="./IMG/logo.png" alt="Logo do Fortnite">
             </a>
