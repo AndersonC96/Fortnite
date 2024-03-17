@@ -9,6 +9,11 @@
         <link href="./CSS/style.css" rel="stylesheet">
     </head>
     <body>
+        <div class="video-background">
+            <video autoplay loop muted playsinline>
+                <source src="./Video/Video.mp4" type="video/mp4">Seu navegador não suporta vídeos.
+            </video>
+        </div>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="#">Sistema Fortnite</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,10 +48,13 @@
                 </ul>
             </div>
         </nav>
-        <div class="container mt-4">
+        <!--<div class="container mt-4">
             <h1>Bem-vindo ao Sistema Fortnite</h1>
             <p>Selecione uma opção no menu para começar.</p>
-        </div>
+        </div>-->
+        <!--<div class="youtube-container">
+            <iframe src="https://www.youtube.com/watch?v=bz0BtZ4hyaM" frameborder="0" allowfullscreen></iframe>
+        </div>-->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
