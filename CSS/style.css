@@ -27,3 +27,37 @@ body{
     min-width: 100vw;
     min-height: 100vh;
 }
+.navbar-brand img{
+    height: 30px;
+    width: auto;
+}
+.navbar .dropdown-menu{
+    background-color: #333;
+}
+.dropdown-item{
+    color: #fff;
+}
+.dropdown-item:hover{
+    background-color: #555;
+}
+
+.news-item{
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+}
+.news-item h2{
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
+}
+.news-item img{
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 1em;
+}
+.news-item p{
+    font-size: 1em;
+    line-height: 1.5;
+    text-align: justify;
+}
