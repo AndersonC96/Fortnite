@@ -103,3 +103,10 @@ body{
     width: 100%;
     height: auto;
 }
+.img-platform{
+    width: 100%;
+    height: auto;
+    max-width: 150px;
+    display: block;
+    margin: 0 auto;
+}
