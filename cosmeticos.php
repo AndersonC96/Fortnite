@@ -4,7 +4,9 @@
     $cosmeticsData = [];
     if(!empty($searchQuery)){
         $url = "https://fortnite-api.com/v2/cosmetics/br/search?name=" . urlencode($searchQuery);
+        error_log("URL de busca: " . $url);
         $cosmeticsData = callFortniteAPI($url);
+        error_log("Resposta da busca: " . print_r($cosmeticsData, true));
     }else{
         $cosmeticsData = callFortniteAPI('cosmetics/br/new');
     }
