@@ -1,58 +1,55 @@
-<!DOCTYPE html>
-<html lang="pt">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Fortnite API</title>
-        <link rel="icon" href="./IMG/favicon.png" type="image/x-icon" />
-        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
-        <link href="./CSS/style.css" rel="stylesheet">
-    </head>
-    <body>
-        <div class="video-background">
-            <video autoplay loop muted playsinline>
-                <source src="./Video/Video.mp4" type="video/mp4">Seu navegador não suporta vídeos.
-            </video>
+<?php $pageTitle = 'Home - Fortnite Tracker'; include 'header.php'; ?>
+
+<div class="container mt-5 pt-5">
+    <div class="text-center mb-5">
+        <h1 class="display-3 text-white" style="text-shadow: 0 0 20px rgba(0,0,0,0.8);">Bem-vindo ao <span class="text-gradient">Fortnite Hub</span></h1>
+        <p class="lead text-light">Sua fonte definitiva para Loja, Notícias e Status.</p>
+    </div>
+
+    <!-- Multi-Search Bar -->
+    <div class="row justify-content-center mb-5">
+        <div class="col-md-8">
+            <form class="input-group glass-card p-2" action="cosmeticos.php" method="GET">
+                <input type="text" name="query" class="form-control bg-transparent border-0 text-white" placeholder="Buscar cosmético..." style="font-family: 'Inter', sans-serif;">
+                <div class="input-group-append">
+                    <button class="btn btn-fn" type="submit">Buscar</button>
+                </div>
+            </form>
         </div>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="index.php">
-                <img src="./IMG/logo.png" alt="Logo do Fortnite">
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="index.php">Home</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Notícias</a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="noticias.php">Notícias Gerais</a>
-                            <a class="dropdown-item" href="noticias_br.php">Notícias BR</a>
-                            <a class="dropdown-item" href="noticias_stw.php">Notícias STW</a>
-                            <a class="dropdown-item" href="noticias_creative.php">Notícias Creative</a>
-                        </div>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="cosmeticos.php">Cosméticos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="loja.php">Loja</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="status.php">Status</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="plataformas.php">Plataformas</a>
-                    </li>
-                </ul>
+    </div>
+
+    <!-- Bento Grid Dashboard -->
+    <div class="bento-grid">
+        <!-- Featured Shop Item -->
+        <div class="glass-card bento-item span-2">
+            <h3 class="h3-cor">Item em Destaque</h3>
+            <div class="d-flex align-items-center">
+                <div class="flex-grow-1">
+                    <p>Confira a loja de hoje atualizada em tempo real.</p>
+                    <a href="loja.php" class="btn btn-outline-light mt-3">Ver Loja Completa</a>
+                </div>
+                <!-- Placeholder for API image, using a static icon for now -->
+                <img src="./IMG/logo.png" style="opacity: 0.8; height: 100px;" alt="Shop Icon">
             </div>
-        </nav>
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    </body>
-</html>
+        </div>
+
+        <!-- Latest News -->
+        <div class="glass-card bento-item">
+            <h3 class="text-primary">Últimas Notícias</h3>
+            <p>Fique por dentro das atualizações e patch notes.</p>
+            <a href="noticias.php" class="btn btn-sm btn-fn mt-auto">Ler Notícias</a>
+        </div>
+
+        <!-- Server Status -->
+        <div class="glass-card bento-item">
+            <h3 class="text-success">Status do Servidor</h3>
+            <div class="d-flex align-items-center mt-2">
+                <div style="width: 15px; height: 15px; background: #00ff00; border-radius: 50%; box-shadow: 0 0 10px #00ff00;"></div>
+                <span class="ml-2">Online</span>
+            </div>
+            <a href="status.php" class="btn btn-sm btn-outline-light mt-4">Detalhes</a>
+        </div>
+    </div>
+</div>
+
+<?php include 'footer.php'; ?>

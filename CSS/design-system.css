@@ -1,0 +1,227 @@
+/* 
+   Fortnite 2025 Design System
+   Theme: Dark/Neon/Glassmorphism 
+*/
+
+:root {
+    /* Colors */
+    --bg-dark: #0a0b14;
+    --bg-darker: #050508;
+    --primary: #8a2be2; /* BlueViolet */
+    --primary-glow: #8a2be2;
+    --secondary: #00d2ff; /* Cyan */
+    --accent: #f9a602; /* Gold/Yellow (Legacy support) */
+    --text-main: #ffffff;
+    --text-muted: #a0a0b0;
+    
+    /* Rarity Colors */
+    --rarity-common: #b1b1b1;
+    --rarity-rare: #00d2ff;
+    --rarity-epic: #c542f5;
+    --rarity-legendary: #f5a623;
+    
+    /* Glassmorphism */
+    --glass-bg: rgba(20, 20, 35, 0.6);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-blur: 12px;
+    
+    /* Spacing */
+    --space-sm: 8px;
+    --space-md: 16px;
+    --space-lg: 24px;
+    --space-xl: 40px;
+    
+    /* Radius */
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+}
+
+/* Reset & Base */
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: 'Inter', sans-serif; /* Modern body font */
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, .navbar-brand {
+    font-family: 'Bangers', cursive; /* Keeping the Fortnite identity */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Utilities */
+.text-gradient {
+    background: linear-gradient(45deg, var(--secondary), var(--primary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Glass Card */
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-lg);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 0 20px rgba(138, 43, 226, 0.4); /* Primary glow */
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Bento Grid System */
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-lg);
+    padding: var(--space-lg) 0;
+}
+
+.bento-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.bento-item.span-2 {
+    grid-column: span 2;
+}
+
+@media (max-width: 768px) {
+    .bento-item.span-2 {
+        grid-column: span 1;
+    }
+}
+
+/* Buttons */
+.btn-fn {
+    background: linear-gradient(90deg, var(--primary), #6a0dad);
+    border: none;
+    color: white;
+    padding: 10px 24px;
+    font-family: 'Bangers', cursive;
+    font-size: 1.2rem;
+    border-radius: 8px; /* Slightly rounded, not full pill */
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(138, 43, 226, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-fn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(0, 210, 255, 0.6);
+    color: white;
+}
+
+/* Navbar Customization */
+.navbar-glass {
+    background: rgba(10, 11, 20, 0.85) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.nav-link {
+    font-family: 'Bangers', cursive;
+    font-size: 1.3rem;
+    color: var(--text-muted) !important;
+    transition: color 0.3s;
+}
+
+/* Navbar Customization Restored */
+.nav-link:hover, .nav-link.active {
+    color: var(--secondary) !important;
+    text-shadow: 0 0 10px var(--secondary);
+}
+
+/* Bootstrap Overrides for Glassmorphism */
+.card {
+    background: var(--glass-bg);
+    background-clip: padding-box; /* Fix for lint warning */
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    color: var(--text-main);
+    border-radius: var(--radius-md);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s;
+    overflow: hidden; /* Fixes rounded corners with images */
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.card-title {
+    color: var(--secondary); /* Cyan title */
+    font-family: 'Bangers', cursive;
+    letter-spacing: 1px;
+}
+
+.card-text {
+    color: var(--text-muted);
+}
+
+/* Alerts */
+.alert {
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid transparent;
+    color: white;
+    font-weight: 500;
+}
+
+.alert-success {
+    border-color: rgba(0, 255, 0, 0.3);
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.1);
+}
+
+.alert-danger {
+    border-color: rgba(255, 0, 0, 0.3);
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.1);
+}
+
+/* Form Controls */
+.form-control {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    color: white;
+}
+
+.form-control:focus {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--primary);
+    color: white;
+    box-shadow: 0 0 10px rgba(138, 43, 226, 0.3);
+}
+
+.form-control::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* Pagination / Other Bootstrap Elements */
+.page-link {
+    background-color: transparent;
+    border-color: var(--glass-border);
+    color: var(--secondary);
+}
+
+.page-item.active .page-link {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+.page-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+}
