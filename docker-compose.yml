@@ -1,0 +1,40 @@
+# Fortnite Hub - Docker Compose
+# Development and Production environments
+
+version: '3.8'
+
+services:
+  # PHP Application
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: fortnite-hub
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/var/www/html
+      - ./cache:/var/www/html/cache
+    environment:
+      - FORTNITE_API_KEY=${FORTNITE_API_KEY}
+      - FORTNITE_API_URL=https://fortnite-api.com/v2/
+      - APP_ENV=production
+      - APP_DEBUG=false
+      - CACHE_ENABLED=true
+      - CACHE_TTL=300
+    restart: unless-stopped
+    networks:
+      - fortnite-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+networks:
+  fortnite-network:
+    driver: bridge
+
+volumes:
+  cache:
+    driver: local

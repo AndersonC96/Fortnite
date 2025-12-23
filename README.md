@@ -6,6 +6,8 @@
 ![MVC](https://img.shields.io/badge/Pattern-MVC-blue?style=flat-square)
 ![PSR-4](https://img.shields.io/badge/Autoload-PSR--4-green?style=flat-square)
 ![PSR-12](https://img.shields.io/badge/Code%20Style-PSR--12-green?style=flat-square)
+![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?style=flat-square&logo=docker&logoColor=white)
+![PWA](https://img.shields.io/badge/PWA-Enabled-5A0FC8?style=flat-square)
 
 ## ✨ Funcionalidades
 
@@ -23,83 +25,61 @@
 
 ```
 Fortnite/
-├── app/                    # Código da aplicação
-│   ├── Controllers/        # Controllers (HomeController, ShopController...)
-│   ├── Models/             # Models (FortniteAPI)
-│   ├── Views/              # Templates PHP
-│   │   ├── layouts/        # Layout principal
-│   │   ├── home/           # Views da home
-│   │   ├── shop/           # Views da loja
-│   │   ├── cosmetics/      # Views de cosméticos
-│   │   ├── news/           # Views de notícias
-│   │   ├── map/            # Views do mapa
-│   │   ├── modes/          # Views de modos
-│   │   ├── player/         # Views de jogador
-│   │   └── errors/         # Páginas de erro
-│   └── Core/               # Core framework
-│       ├── Router.php      # Sistema de rotas
-│       ├── Controller.php  # Base controller
-│       └── Cache.php       # Sistema de cache
-├── public/                 # Arquivos públicos (DocumentRoot)
-│   ├── index.php           # Front controller
-│   ├── autoload.php        # Autoloader PSR-4
-│   ├── .htaccess           # Rewrite rules
-│   ├── css/                # Estilos
-│   └── img/                # Imagens
-├── cache/                  # Cache de API
-├── config/                 # Configurações
-├── .env                    # Variáveis de ambiente
-├── .env.example            # Template de variáveis
-└── composer.json           # Configuração Composer
+├── app/                    # Código da aplicação (MVC)
+│   ├── Controllers/        # 7 Controllers
+│   ├── Models/             # FortniteAPI com cache
+│   ├── Views/              # Templates PHP organizados
+│   └── Core/               # Router, Controller, Cache
+├── public/                 # Front Controller (DocumentRoot)
+│   ├── index.php           # Entry point
+│   ├── autoload.php        # PSR-4 Autoloader
+│   ├── manifest.json       # PWA Manifest
+│   └── sw.js               # Service Worker
+├── tests/                  # PHPUnit Tests
+├── docker/                 # Docker config
+├── .github/workflows/      # CI/CD Pipeline
+└── cache/                  # API Cache
 ```
 
-## 🚀 Instalação
+## 🚀 Quick Start
 
-### Pré-requisitos
-- PHP 7.4+ (recomendado 8.0+)
-- Apache com mod_rewrite
-- XAMPP, WAMP ou similar
-
-### Passos
-
-1. **Clone o repositório:**
+### Opção 1: XAMPP/Local
 ```bash
+# Clone
 git clone https://github.com/seu-usuario/fortnite-hub.git
 cd fortnite-hub
-```
 
-2. **Configure o ambiente:**
-```bash
+# Configure
 cp .env.example .env
-# Edite .env e configure sua API key
-```
+# Edite .env com sua API key
 
-3. **Configure o Apache:**
-Aponte o DocumentRoot para `/public` ou acesse via:
-```
+# Acesse
 http://localhost/Fortnite/public/
 ```
 
-4. **(Opcional) Instale dependências do Composer:**
+### Opção 2: Docker
 ```bash
-composer install
+# Build e run
+docker-compose up -d
+
+# Acesse
+http://localhost:8080/
 ```
-> O projeto inclui um autoloader standalone, o Composer é opcional.
+
+### Opção 3: PHP Built-in Server
+```bash
+composer start
+# Acesse: http://localhost:8000/
+```
 
 ## 🔧 Configuração
 
 ### Variáveis de Ambiente (.env)
-
 ```env
-# API Configuration
 FORTNITE_API_KEY=sua_api_key_aqui
 FORTNITE_API_URL=https://fortnite-api.com/v2/
-
-# App Configuration
 APP_ENV=development
 APP_DEBUG=true
-
-# Cache Configuration (segundos)
 CACHE_ENABLED=true
 CACHE_TTL=300
 ```
@@ -113,45 +93,90 @@ CACHE_TTL=300
 
 | Método | Rota | Controller | Descrição |
 |--------|------|------------|-----------|
-| GET | `/` | HomeController@index | Página inicial |
-| GET | `/shop` | ShopController@index | Loja diária |
-| GET | `/cosmetics` | CosmeticsController@index | Lista de cosméticos |
-| GET | `/cosmetics/{id}` | CosmeticsController@show | Detalhes do cosmético |
-| GET | `/news` | NewsController@index | Todas as notícias |
-| GET | `/news/br` | NewsController@br | Notícias Battle Royale |
-| GET | `/news/stw` | NewsController@stw | Notícias Save the World |
-| GET | `/map` | MapController@index | Mapa do jogo |
-| GET | `/modes` | ModesController@index | Modos de jogo |
-| GET | `/player` | PlayerController@search | Busca de jogador |
+| GET | `/` | HomeController | Página inicial |
+| GET | `/shop` | ShopController | Loja diária |
+| GET | `/cosmetics` | CosmeticsController | Lista de cosméticos |
+| GET | `/cosmetics/{id}` | CosmeticsController | Detalhes |
+| GET | `/news` | NewsController | Todas as notícias |
+| GET | `/news/br` | NewsController | Battle Royale |
+| GET | `/news/stw` | NewsController | Save the World |
+| GET | `/map` | MapController | Mapa do jogo |
+| GET | `/modes` | ModesController | Modos de jogo |
+| GET | `/player` | PlayerController | Busca jogador |
+
+## 🧪 Testes
+
+```bash
+# Instalar dependências de desenvolvimento
+composer install
+
+# Rodar testes
+composer test
+
+# Testes com cobertura
+composer test:coverage
+```
 
 ## 📚 PHP Standards
 
-- **PSR-4**: Autoloading de classes com namespaces
-- **PSR-12**: Coding style (indentação, espaçamento, declarações)
-- **Type Hints**: Tipagem estrita com `declare(strict_types=1)`
-- **PHPDoc**: Documentação de métodos e propriedades
+| Standard | Implementação |
+|----------|---------------|
+| **PSR-4** | Autoloading via Composer/Standalone |
+| **PSR-12** | Coding style com strict_types |
+| **Type Hints** | Parâmetros e retornos tipados |
+| **PHPDoc** | Documentação completa |
+
+## 🐳 Docker
+
+```bash
+# Build
+docker build -t fortnite-hub .
+
+# Run
+docker run -p 8080:80 -e FORTNITE_API_KEY=sua_key fortnite-hub
+
+# Compose (com environment)
+docker-compose up -d
+```
+
+## 🔄 CI/CD
+
+O projeto inclui GitHub Actions para:
+
+- ✅ **Lint**: Verificação de código PHP
+- ✅ **Test**: Testes automatizados PHPUnit
+- ✅ **Security**: Scan de vulnerabilidades
+- ✅ **Build**: Build de imagem Docker
+- ✅ **Deploy**: Deploy automático (configurável)
+
+## 📱 PWA Features
+
+- ✅ Instalável em dispositivos móveis
+- ✅ Funciona offline (cache de assets)
+- ✅ Ícones personalizados
+- ✅ Splash screen
+- ✅ Push notifications (preparado)
 
 ## 🛡️ Segurança
 
-- ✅ API Key em variável de ambiente (não exposta no código)
-- ✅ Sanitização com `htmlspecialchars()` para prevenir XSS
-- ✅ Headers de segurança no `.htaccess`
-- ✅ Proteção contra directory listing
-- ✅ `.env` protegido de acesso público
+- ✅ API Key em variável de ambiente
+- ✅ Sanitização XSS com `htmlspecialchars()`
+- ✅ Headers de segurança (X-Frame-Options, X-XSS-Protection)
+- ✅ HTTPS ready
+- ✅ `.env` protegido
 
 ## 🎨 Design
 
-O projeto usa um Design System customizado inspirado no Fortnite:
+- **Theme**: Dark mode inspirado no Fortnite
+- **Colors**: Purple (#9d4edd), Blue (#00f0ff), Pink (#ff6b9d)
+- **Fonts**: Russo One + Poppins
+- **Animations**: Transições suaves, hover effects
+- **Responsive**: Mobile-first design
 
-- **Cores**: Tema escuro com gradientes neon (purple, blue, pink)
-- **Tipografia**: Russo One + Poppins
-- **Animações**: Transições suaves e efeitos hover
-- **Responsivo**: Grid CSS adaptável para mobile
-
-## 📝 APIs Utilizadas
+## 📝 APIs
 
 - [Fortnite-API.com](https://fortnite-api.com/) - Dados oficiais
-- [FortniteAPI.io](https://fortniteapi.io/) - Mapa do jogo
+- [FortniteAPI.io](https://fortniteapi.io/) - Mapa
 
 ## 📄 Licença
 

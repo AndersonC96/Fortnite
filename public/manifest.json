@@ -1,0 +1,55 @@
+{
+    "name": "Fortnite Hub",
+    "short_name": "FN Hub",
+    "description": "Portal de informações do Fortnite - Loja, Cosméticos, Notícias e mais",
+    "start_url": "/Fortnite/public/",
+    "display": "standalone",
+    "background_color": "#0d0d1a",
+    "theme_color": "#9d4edd",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "./img/logo.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "./img/logo.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "categories": [
+        "games",
+        "entertainment"
+    ],
+    "lang": "pt-BR",
+    "shortcuts": [
+        {
+            "name": "Loja",
+            "short_name": "Loja",
+            "description": "Ver loja diária",
+            "url": "/Fortnite/public/shop",
+            "icons": [
+                {
+                    "src": "./img/logo.png",
+                    "sizes": "96x96"
+                }
+            ]
+        },
+        {
+            "name": "Cosméticos",
+            "short_name": "Cosméticos",
+            "description": "Explorar cosméticos",
+            "url": "/Fortnite/public/cosmetics",
+            "icons": [
+                {
+                    "src": "./img/logo.png",
+                    "sizes": "96x96"
+                }
+            ]
+        }
+    ]
+}

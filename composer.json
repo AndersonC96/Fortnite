@@ -10,18 +10,31 @@
         }
     ],
     "require": {
-        "php": ">=7.4",
-        "vlucas/phpdotenv": "^5.5"
+        "php": ">=7.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.0",
+        "friendsofphp/php-cs-fixer": "^3.0"
     },
     "autoload": {
         "psr-4": {
             "FortniteHub\\": "app/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
     "config": {
-        "optimize-autoloader": true
+        "optimize-autoloader": true,
+        "sort-packages": true
     },
     "scripts": {
-        "start": "php -S localhost:8000 -t public"
+        "start": "php -S localhost:8000 -t public",
+        "test": "phpunit",
+        "test:coverage": "phpunit --coverage-html tests/coverage",
+        "lint": "php-cs-fixer fix --dry-run --diff",
+        "lint:fix": "php-cs-fixer fix"
     }
 }

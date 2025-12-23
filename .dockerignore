@@ -1,0 +1,45 @@
+# Fortnite Hub - Docker Ignore
+# Exclude unnecessary files from Docker build
+
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Environment (use Docker env vars instead)
+.env
+.env.example
+
+# Documentation
+README.md
+*.md
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Cache (mounted as volume)
+cache/*
+!cache/.gitkeep
+
+# Composer dev dependencies
+vendor/
+
+# Tests
+tests/
+phpunit.xml
+
+# JSON data files
+*.json
+!composer.json
+!package.json
+!manifest.json
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db

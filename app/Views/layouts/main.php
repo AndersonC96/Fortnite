@@ -4,8 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Fortnite Hub - Sua central de informações para Loja, Notícias e Cosméticos do Fortnite">
+    <meta name="theme-color" content="#9d4edd">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Fortnite Hub">
     <title><?= htmlspecialchars($pageTitle) ?></title>
     <link rel="icon" href="./img/favicon.png" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="./img/logo.png">
+    <link rel="manifest" href="./manifest.json">
     <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="./css/design-system.css" rel="stylesheet">
@@ -75,5 +81,16 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+    <!-- PWA Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then(reg => console.log('Service Worker registered:', reg.scope))
+                    .catch(err => console.log('Service Worker registration failed:', err));
+            });
+        }
+    </script>
 </body>
 </html>
