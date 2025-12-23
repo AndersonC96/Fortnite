@@ -1,0 +1,27 @@
+{
+    "name": "fortnite-hub/app",
+    "description": "Fortnite Hub - Portal de informações do Fortnite",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Anderson",
+            "email": "dev@fortnite-hub.local"
+        }
+    ],
+    "require": {
+        "php": ">=7.4",
+        "vlucas/phpdotenv": "^5.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "FortniteHub\\": "app/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true
+    },
+    "scripts": {
+        "start": "php -S localhost:8000 -t public"
+    }
+}

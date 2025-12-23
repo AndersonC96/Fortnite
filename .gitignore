@@ -1,0 +1,29 @@
+# Environment files
+.env
+!.env.example
+
+# Cache
+/cache/*
+!/cache/.gitkeep
+
+# Composer
+/vendor/
+composer.lock
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# JSON data files (dynamic)
+shop.json
+cosmetics.json
+news.json
