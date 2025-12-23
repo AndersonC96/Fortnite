@@ -68,10 +68,10 @@ $searchQuery = isset($_GET['q']) ? trim($_GET['q']) : '';
             if(empty($filteredEntries)) continue;
             
             echo "<div class='shop-section' style='margin-bottom: 60px;'>";
-            echo "<h2 style='color: var(--fn-purple); margin-bottom: 25px; display: flex; align-items: center; gap: 10px;'>";
-            echo "<span style='background: linear-gradient(135deg, var(--fn-purple), var(--fn-blue)); padding: 8px 16px; border-radius: 8px; font-size: 0.9rem;'>$sectionName</span>";
-            echo "<span style='color: var(--text-secondary); font-size: 0.9rem;'>(" . count($filteredEntries) . " itens)</span>";
-            echo "</h2>";
+            echo "<div class='section-header' style='margin-bottom: 30px; display: flex; align-items: center; gap: 15px; flex-wrap: wrap;'>";
+            echo "<h2 style='margin: 0; background: linear-gradient(135deg, var(--fn-purple), var(--fn-blue)); padding: 12px 24px; border-radius: 12px; font-size: 1.1rem; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.3); box-shadow: 0 4px 15px rgba(157, 78, 221, 0.4); border: 1px solid rgba(255,255,255,0.1);'>" . htmlspecialchars($sectionName) . "</h2>";
+            echo "<span style='color: var(--text-secondary); font-size: 0.9rem; background: rgba(255,255,255,0.05); padding: 6px 12px; border-radius: 20px;'>" . count($filteredEntries) . " itens</span>";
+            echo "</div>";
             echo "<div class='items-grid'>";
             
             foreach($filteredEntries as $entry){
