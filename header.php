@@ -51,11 +51,18 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                     <li class="nav-item">
                         <a class="nav-link <?php echo ($currentPage == 'loja.php') ? 'active' : ''; ?>" href="loja.php">Loja</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link <?php echo ($currentPage == 'status.php') ? 'active' : ''; ?>" href="status.php">Status</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link <?php echo ($currentPage == 'plataformas.php') ? 'active' : ''; ?>" href="plataformas.php">Plataformas</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle <?php echo (in_array($currentPage, ['mapa.php', 'modos.php', 'jogador.php'])) ? 'active' : ''; ?>" href="#" id="explorarDropdown" role="button" data-toggle="dropdown">
+                            Explorar
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="mapa.php">🗺️ Mapa</a>
+                            <a class="dropdown-item" href="modos.php">🎮 Modos de Jogo</a>
+                            <a class="dropdown-item" href="jogador.php">🔍 Buscar Jogador</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="status.php">📡 Status do Servidor</a>
+                            <a class="dropdown-item" href="plataformas.php">💻 Plataformas</a>
+                        </div>
                     </li>
                 </ul>
             </div>
