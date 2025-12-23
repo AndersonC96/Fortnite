@@ -73,18 +73,28 @@ include 'apiConfig.php';
     
     <div class="items-grid" style="max-width: 1000px; margin: 0 auto;">
         <?php
-        $storeData = callFortniteAPI('shop/br');
+        $storeData = callFortniteAPI('shop');
         $count = 0;
-        if($storeData && $storeData['status'] == 200 && !empty($storeData['data']['featured']['entries'])){
-            foreach($storeData['data']['featured']['entries'] as $entry){
-                if($count >= 4) break; // Limit to 4 items
+        if($storeData && $storeData['status'] == 200 && !empty($storeData['data']['entries'])){
+            foreach($storeData['data']['entries'] as $entry){
+                if($count >= 4) break;
                 
-                $imageUrl = $entry['bundle']['image'] ?? ($entry['newDisplayAsset']['materialInstances'][0]['images']['Background'] ?? './IMG/logo.png');
-                $itemName = $entry['bundle']['name'] ?? 'Item';
+                // Get image
+                $imageUrl = './IMG/logo.png';
+                if(!empty($entry['bundle']['image'])){
+                    $imageUrl = $entry['bundle']['image'];
+                } elseif(!empty($entry['newDisplayAsset']['renderImages'][0]['image'])){
+                    $imageUrl = $entry['newDisplayAsset']['renderImages'][0]['image'];
+                } elseif(!empty($entry['brItems'][0]['images']['featured'])){
+                    $imageUrl = $entry['brItems'][0]['images']['featured'];
+                }
+                
+                // Get name
+                $itemName = $entry['bundle']['name'] ?? ($entry['brItems'][0]['name'] ?? 'Item');
                 $finalPrice = $entry['finalPrice'] ?? 0;
                 
                 echo "<div class='item-card rarity-legendary'>";
-                echo "<img src='" . htmlspecialchars($imageUrl, ENT_QUOTES, 'UTF-8') . "' alt='" . htmlspecialchars($itemName) . "'>";
+                echo "<img src='" . htmlspecialchars($imageUrl, ENT_QUOTES, 'UTF-8') . "' alt='" . htmlspecialchars($itemName) . "' onerror=\"this.src='./IMG/logo.png'\">";
                 echo "<div class='card-body'>";
                 echo "<h5 class='card-title'>" . htmlspecialchars($itemName, ENT_QUOTES, 'UTF-8') . "</h5>";
                 echo "<p class='card-text'>💰 " . number_format($finalPrice, 0, ',', '.') . " V-Bucks</p>";
