@@ -50,7 +50,7 @@
                 
                 <img src="<?= htmlspecialchars($item['image']) ?>" 
                      alt="<?= htmlspecialchars($item['name']) ?>"
-                     onerror="this.src='./img/logo.png'"
+                     onerror="this.src='<?= $base ?>/img/logo.png'"
                      loading="lazy">
                 
                 <div class="card-body">

@@ -7,13 +7,13 @@
         <div>
             <div class="feature-card" style="padding: 20px; text-align: center;">
                 <?php 
-                $imageUrl = $item['images']['featured'] ?? $item['images']['icon'] ?? './img/logo.png';
+                $imageUrl = $item['images']['featured'] ?? $item['images']['icon'] ?? $base . '/img/logo.png';
                 $rarity = strtolower($item['rarity']['value'] ?? 'common');
                 ?>
                 <img src="<?= htmlspecialchars($imageUrl) ?>" 
                      alt="<?= htmlspecialchars($item['name']) ?>" 
                      style="max-width: 100%; border-radius: 12px; border-bottom: 4px solid var(--rarity-<?= $rarity ?>);"
-                     onerror="this.src='./img/logo.png'">
+                     onerror="this.src='<?= $base ?>/img/logo.png'">
                 
                 <!-- LEGO/Bean versions -->
                 <div style="display: flex; gap: 10px; margin-top: 15px; justify-content: center;">

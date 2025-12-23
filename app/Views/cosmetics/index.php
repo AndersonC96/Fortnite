@@ -116,14 +116,14 @@ async function loadCosmetics() {
 
 function createCard(item, index) {
     const rarity = item.rarity?.value?.toLowerCase() || 'common';
-    const imageUrl = item.images?.featured || item.images?.icon || './img/logo.png';
+    const imageUrl = item.images?.featured || item.images?.icon || basePath + '/img/logo.png';
     
     const card = document.createElement('a');
     card.href = `${basePath}/cosmetics/${item.id}`;
     card.className = `item-card rarity-${rarity} cosmetic-item`;
     card.style.animationDelay = `${index * 0.05}s`;
     card.innerHTML = `
-        <img src="${imageUrl}" alt="${item.name}" loading="lazy" onerror="this.src='./img/logo.png'">
+        <img src="${imageUrl}" alt="${item.name}" loading="lazy" onerror="this.src='${basePath}/img/logo.png'">
         <div class="card-body">
             <h5 class="card-title">${item.name}</h5>
             <p class="card-text" style="color: var(--text-secondary); font-size: 0.85rem;">

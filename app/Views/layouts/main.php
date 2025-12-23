@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt">
+<?php $base = '/Fortnite/public'; ?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,14 +10,13 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Fortnite Hub">
     <title><?= htmlspecialchars($pageTitle) ?></title>
-    <link rel="icon" href="./img/favicon.png" type="image/x-icon" />
-    <link rel="apple-touch-icon" href="./img/logo.png">
-    <link rel="manifest" href="./manifest.json">
+    <link rel="icon" href="<?= $base ?>/img/favicon.png" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="<?= $base ?>/img/logo.png">
+    <link rel="manifest" href="<?= $base ?>/manifest.json">
     <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="./css/design-system.css" rel="stylesheet">
-    <link href="./css/style.css" rel="stylesheet">
-    <?php $base = '/Fortnite/public'; ?>
+    <link href="<?= $base ?>/css/design-system.css" rel="stylesheet">
+    <link href="<?= $base ?>/css/style.css" rel="stylesheet">
 </head>
 <body>
     <!-- Animated Background -->
@@ -26,7 +26,7 @@
     <nav class="navbar navbar-expand-lg navbar-fn">
         <div class="container">
             <a class="navbar-brand" href="<?= $base ?>/">
-                <img src="./img/logo.png" alt="Fortnite Hub">
+                <img src="<?= $base ?>/img/logo.png" alt="Fortnite Hub">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
@@ -86,7 +86,7 @@
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('./sw.js')
+                navigator.serviceWorker.register('<?= $base ?>/sw.js')
                     .then(reg => console.log('Service Worker registered:', reg.scope))
                     .catch(err => console.log('Service Worker registration failed:', err));
             });

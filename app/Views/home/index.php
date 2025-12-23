@@ -72,7 +72,7 @@
             <div class="item-card rarity-legendary">
                 <img src="<?= htmlspecialchars($item['image']) ?>" 
                      alt="<?= htmlspecialchars($item['name']) ?>" 
-                     onerror="this.src='./img/logo.png'">
+                     onerror="this.src='<?= $base ?>/img/logo.png'">
                 <div class="card-body">
                     <h5 class="card-title"><?= htmlspecialchars($item['name']) ?></h5>
                     <p class="card-text">💰 <?= number_format($item['price'], 0, ',', '.') ?> V-Bucks</p>
