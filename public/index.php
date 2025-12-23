@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 // Error reporting for development
 error_reporting(E_ALL);
-ini_set('display_errors', '0');
+ini_set('display_errors', '1');
 
 // Define base path
 define('BASE_PATH', dirname(__DIR__));
