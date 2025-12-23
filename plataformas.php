@@ -1,40 +1,75 @@
 <?php 
-$pageTitle = 'Plataformas Fortnite';
+$pageTitle = 'Plataformas - Fortnite Hub';
 include 'header.php'; 
 ?>
-<div class="container mt-5 pt-4">
-            <h1>Plataformas Suportadas</h1>
-            <br>
-            <h2>Dispositivos Móveis</h2>
-            <div class="row mb-4">
-                <div class="col"><a href="https://www.fortnite.com/mobile/android/new-device"><img src="./IMG/android.png" alt="Android" class="img-platform"></a></div>
-                <div class="col"><a href="https://luna.amazon.com/detail/B0BTRVRN6M?r=web&ref=tmp_ext_epic&autoplay=1"><img src="./IMG/amazon-luna.png" alt="Amazon Luna" class="img-platform"></a></div>
-                <div class="col"><a href="https://www.nvidia.com/en-us/geforce-now/fortnite-mobile/?ncid=partn-629709#cid=ct0021_partn_en-us" target="_blank"><img src="./IMG/geforce-now.png" alt="Nvidia Geforce Now" class="img-platform"></a></div>
-                <div class="col"><a href="https://galaxystore.samsung.com/detail/com.epicgames.portal?session_id=W_96efd9e9bb72fdd7a126fdbfe6de7871" target="_blank"><img src="./IMG/galaxy-store.png" alt="Samsung Galaxy Store" class="img-platform"></a></div>
-                <div class="col"><a href="https://www.xbox.com/pt-BR/play/launch/fortnite/BT5P2X999VH2" target="_blank"><img src="./IMG/xcloud.png" alt="Xbox Cloud Gaming" class="img-platform"></a></div>
-            </div>
-            <br>
-            <h2>Nintendo</h2>
-            <div class="row mb-4">
-                <div class="col"><a href="https://www.nintendo.com/us/store/products/fortnite-switch/"><img src="./IMG/switch.png" alt="Nintendo Switch" class="img-platform"></a></div>
-            </div>
-            <br>
-            <h2>PC</h2>
-            <div class="row mb-4">
-                <div class="col"><a href="https://store.epicgames.com/pt-BR/discover/fortnite"><img src="./IMG/epic-games.png" alt="PC" class="img-platform"></a></div>
-            </div>
-            <br>
-            <h2>PlayStation</h2>
-            <div class="row mb-4">
-                <div class="col"><a href="https://store.playstation.com/pt-br/product/UP1477-PPSA01922_00-FNBNDL0000000000"><img src="./IMG/ps4.png" alt="Playstation 4" class="img-platform"></a></div>
-                <div class="col"><a href="https://store.playstation.com/pt-br/product/UP1477-PPSA01922_00-FNBNDL0000000000"><img src="./IMG/ps5.png" alt="Playstation 5" class="img-platform"></a></div>
-            </div>
-            <br>
-            <h2>Xbox</h2>
-            <div class="row mb-4">
-                <div class="col"><a href="https://www.xbox.com/pt-BR/play/launch/fortnite/BT5P2X999VH2"><img src="./IMG/one.png" alt="Xbox One" class="img-platform"></a></div>
-                <div class="col"><a href="https://www.xbox.com/pt-BR/play/launch/fortnite/BT5P2X999VH2"><img src="./IMG/series.png" alt="Xbox Series" class="img-platform"></a></div>
-            </div>
+
+<div class="page-container container-fn">
+    <div style="text-align: center; margin-bottom: 50px;">
+        <h1 class="text-gradient">🎮 Plataformas</h1>
+        <p style="color: var(--text-secondary); margin-top: 15px;">Baixe e jogue Fortnite em qualquer lugar</p>
+    </div>
+    
+    <!-- Mobile -->
+    <div style="margin-bottom: 60px;">
+        <h2 style="text-align: center; margin-bottom: 30px; color: var(--fn-blue);">📱 Dispositivos Móveis</h2>
+        <div class="features-grid" style="max-width: 1000px; margin: 0 auto;">
+            <a href="https://www.fortnite.com/mobile/android/new-device" target="_blank" class="feature-card" style="text-decoration: none;">
+                <img src="./IMG/android.png" alt="Android" style="height: 60px; margin-bottom: 15px;">
+                <h3>Android</h3>
+                <p>Baixe via Epic Games</p>
+            </a>
+            <a href="https://www.nvidia.com/en-us/geforce-now/fortnite-mobile/" target="_blank" class="feature-card" style="text-decoration: none;">
+                <img src="./IMG/geforce-now.png" alt="GeForce Now" style="height: 60px; margin-bottom: 15px;">
+                <h3>GeForce NOW</h3>
+                <p>Streaming via nuvem</p>
+            </a>
+            <a href="https://www.xbox.com/pt-BR/play/launch/fortnite/BT5P2X999VH2" target="_blank" class="feature-card" style="text-decoration: none;">
+                <img src="./IMG/xcloud.png" alt="Xbox Cloud" style="height: 60px; margin-bottom: 15px;">
+                <h3>Xbox Cloud</h3>
+                <p>Jogue no navegador</p>
+            </a>
+            <a href="https://www.xbox.com/pt-BR/play/launch/fortnite/BT5P2X999VH2" target="_blank" class="feature-card" style="text-decoration: none;">
+                <img src="./IMG/xcloud.png" alt="Xbox Cloud" style="height: 60px; margin-bottom: 15px;">
+                <h3>Xbox Cloud</h3>
+                <p>Jogue no navegador</p>
+            </a>
         </div>
+    </div>
+    
+    <!-- Console -->
+    <div style="margin-bottom: 60px;">
+        <h2 style="text-align: center; margin-bottom: 30px; color: var(--fn-purple);">🕹️ Consoles</h2>
+        <div class="features-grid" style="max-width: 1200px; margin: 0 auto;">
+            <a href="https://store.playstation.com/pt-br/product/UP1477-PPSA01922_00-FNBNDL0000000000" target="_blank" class="feature-card" style="text-decoration: none;">
+                <img src="./IMG/ps5.png" alt="PlayStation" style="height: 60px; margin-bottom: 15px;">
+                <h3>PlayStation</h3>
+                <p>PS4 & PS5</p>
+            </a>
+            <a href="https://www.xbox.com/pt-BR/games/store/fortnite/BT5P2X999VH2" target="_blank" class="feature-card" style="text-decoration: none;">
+                <img src="./IMG/series.png" alt="Xbox" style="height: 60px; margin-bottom: 15px;">
+                <h3>Xbox</h3>
+                <p>One & Series X|S</p>
+            </a>
+            <a href="https://www.nintendo.com/us/store/products/fortnite-switch/" target="_blank" class="feature-card" style="text-decoration: none;">
+                <img src="./IMG/switch.png" alt="Nintendo Switch" style="height: 60px; margin-bottom: 15px;">
+                <h3>Nintendo Switch</h3>
+                <p>Jogue em movimento</p>
+            </a>
+        </div>
+    </div>
+    
+    <!-- PC -->
+    <div>
+        <h2 style="text-align: center; margin-bottom: 30px; color: var(--fn-yellow);">💻 PC</h2>
+        <div style="max-width: 400px; margin: 0 auto;">
+            <a href="https://store.epicgames.com/pt-BR/p/fortnite" target="_blank" class="feature-card" style="text-decoration: none; display: block;">
+                <img src="./IMG/epic-games.png" alt="Epic Games" style="height: 70px; margin-bottom: 15px;">
+                <h3>Epic Games Store</h3>
+                <p>Baixe grátis para Windows</p>
+                <span class="btn-fn" style="margin-top: 15px;">Baixar Agora</span>
+            </a>
+        </div>
+    </div>
 </div>
+
 <?php include 'footer.php'; ?>

@@ -1,56 +1,51 @@
-<?php
-    include 'apiConfig.php';
-    $searchQuery = $_GET['query'] ?? '';
-    $cosmeticsData = [];
-    if(!empty($searchQuery)){
-        $url = "https://fortnite-api.com/v2/cosmetics/br/search?name=" . urlencode($searchQuery);
-        error_log("URL de busca: " . $url);
-        $cosmeticsData = callFortniteAPI($url);
-        error_log("Resposta da busca: " . print_r($cosmeticsData, true));
-    }else{
-        $cosmeticsData = callFortniteAPI('cosmetics/br/new');
-    }
-?>
 <?php 
-// include 'apiConfig.php'; // Included at top already
-$pageTitle = 'Cosméticos Fortnite';
+include 'apiConfig.php'; 
+$pageTitle = 'Cosméticos - Fortnite Hub';
+$searchQuery = $_GET['query'] ?? '';
 include 'header.php'; 
 ?>
 
-<div class="container mt-5 pt-4">
-    <!-- Search Bar Moved Here -->
-    <div class="row justify-content-center mb-4">
-        <div class="col-md-8">
-            <form class="input-group glass-card p-2" action="cosmeticos.php" method="GET">
-                <input class="form-control bg-transparent border-0 text-white" type="search" name="query" placeholder="Buscar Cosmético..." aria-label="Buscar" value="<?php echo htmlspecialchars($searchQuery ?? ''); ?>">
-                <div class="input-group-append">
-                    <button class="btn btn-fn" type="submit">Buscar</button>
-                </div>
-            </form>
-        </div>
+<div class="page-container container-fn">
+    <div style="text-align: center; margin-bottom: 50px;">
+        <h1 class="text-gradient">✨ Cosméticos</h1>
+        <p style="color: var(--text-secondary); margin-top: 15px;">Explore todos os cosméticos do Fortnite</p>
+        
+        <!-- Search Box -->
+        <form class="search-box" action="cosmeticos.php" method="GET" style="margin-top: 30px;">
+            <input type="text" name="query" placeholder="🔍 Buscar cosmético..." value="<?php echo htmlspecialchars($searchQuery); ?>">
+            <button type="submit">Buscar</button>
+        </form>
     </div>
-            <h1>Cosméticos</h1>
-            <div class="row">
-                <?php
-                    $cosmeticsData = callFortniteAPI('cosmetics/br/new');
-                    if($cosmeticsData && $cosmeticsData['status'] == 200 && !empty($cosmeticsData['data']['items'])){
-                        foreach ($cosmeticsData['data']['items'] as $item){
-                            echo "<div class='col-md-6'>";
-                            echo "<div class='card'>";
-                            echo "<img class='card-img-top' src='" . htmlspecialchars($item['images']['icon'], ENT_QUOTES, 'UTF-8') . "' alt='Imagem do cosmético'>";
-                            echo "<div class='card-body'>";
-                            echo "<h5 class='card-title'>" . htmlspecialchars($item['name'], ENT_QUOTES, 'UTF-8') . "</h5>";
-                            echo "<p class='card-text'>" . htmlspecialchars($item['description'], ENT_QUOTES, 'UTF-8') . "</p>";
-                            echo "<a href='detalhes_cosmetico.php?id=" . htmlspecialchars($item['id'], ENT_QUOTES, 'UTF-8') . "' class='btn btn-primary'>Ler Mais</a>";
-                            echo "</div>";
-                            echo "</div>";
-                            echo "</div>";
-                        }
-                    }else{
-                        echo "<p>Não foi possível carregar os cosméticos.</p>";
-                    }
-                ?>
-            </div>
-        </div>
+    
+    <div class="items-grid">
+        <?php
+        $cosmeticsData = callFortniteAPI('cosmetics/br/new');
+        if($cosmeticsData && $cosmeticsData['status'] == 200 && !empty($cosmeticsData['data']['items'])){
+            foreach ($cosmeticsData['data']['items'] as $item){
+                $imageUrl = $item['images']['icon'] ?? './IMG/logo.png';
+                $itemName = $item['name'] ?? 'Cosmético';
+                $itemType = $item['type']['displayValue'] ?? '';
+                $rarity = strtolower($item['rarity']['value'] ?? 'common');
+                
+                echo "<a href='detalhes_cosmetico.php?id=" . htmlspecialchars($item['id']) . "' style='text-decoration: none;'>";
+                echo "<div class='item-card rarity-$rarity'>";
+                echo "<img src='" . htmlspecialchars($imageUrl, ENT_QUOTES, 'UTF-8') . "' alt='" . htmlspecialchars($itemName) . "' onerror=\"this.src='./IMG/logo.png'\">";
+                echo "<div class='card-body'>";
+                echo "<h5 class='card-title'>" . htmlspecialchars($itemName, ENT_QUOTES, 'UTF-8') . "</h5>";
+                echo "<p class='card-text'>" . htmlspecialchars($itemType, ENT_QUOTES, 'UTF-8') . "</p>";
+                echo "<span style='display: inline-block; padding: 4px 12px; background: rgba(255,255,255,0.1); border-radius: 20px; font-size: 0.75rem; text-transform: capitalize;'>" . $rarity . "</span>";
+                echo "</div>";
+                echo "</div>";
+                echo "</a>";
+            }
+        } else {
+            echo "<div style='text-align: center; grid-column: 1/-1; padding: 60px;'>";
+            echo "<p style='font-size: 1.2rem;'>😕 Não foi possível carregar os cosméticos.</p>";
+            echo "<p style='color: var(--text-secondary);'>Tente novamente mais tarde.</p>";
+            echo "</div>";
+        }
+        ?>
+    </div>
 </div>
+
 <?php include 'footer.php'; ?>

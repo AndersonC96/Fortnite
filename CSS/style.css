@@ -1,17 +1,21 @@
-/* Main Styles Update - Imports Design System */
-/* Note: design-system.css must be loaded before style.css if we kept the import here, 
-   but we load it in <head>. This file now handles legacy specific overrides. */
+/* Legacy style overrides - minimal file */
+/* Most styling is now in design-system.css */
 
+/* Video Background (if still used) */
 .video-background {
     position: fixed;
-    right: 0;
-    bottom: 0;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    z-index: -1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
     overflow: hidden;
+}
+
+.video-background video {
+    min-width: 100vw;
+    min-height: 100vh;
+    object-fit: cover;
 }
 
 .video-overlay {
@@ -20,102 +24,21 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(10, 11, 20, 0.7); /* Darkens the video for readability */
+    background: rgba(13, 13, 26, 0.85);
     z-index: 1;
 }
 
-.video-background video {
-    min-width: 100vw;
-    min-height: 100vh;
+/* Extra helpers */
+.h3-cor {
+    color: var(--fn-blue, #00f0ff);
 }
 
-/* Dropdown Menu Customization overrides */
-.dropdown-menu {
-    background-color: var(--glass-bg, #333) !important;
+.img-platform {
+    max-height: 80px;
+    width: auto;
+    transition: transform 0.3s ease;
 }
 
-.dropdown-item {
-    color: #fff;
-    transition: background 0.2s;
-}
-
-.dropdown-item:hover {
-    background-color: var(--primary, #555);
-    color: #fff;
-}
-.dropdown-item{
-    color: #fff;
-}
-.dropdown-item:hover{
-    background-color: #555;
-}
-
-.news-item{
-    margin-bottom: 20px;
-    padding: 15px;
-    border: 1px solid #ddd;
-    background-color: #f9f9f9;
-}
-.news-item h2{
-    font-size: 1.5em;
-    margin-bottom: 0.5em;
-}
-.news-item img{
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 1em;
-}
-.news-item p{
-    font-size: 1em;
-    line-height: 1.5;
-    text-align: justify;
-}
-.card{
-    margin-bottom: 20px;
-}
-.card-body h5.card-title{
-    color: #f9a602;
-}
-.card-body p.card-text{
-    color: #0e101c;
-}
-.card{
-    display: flex;
-    flex-direction: column;
-}
-.card-body{
-    flex: 1;
-}
-@media(min-width: 768px){
-    .col-md-6{
-        flex: 0 0 50%;
-        max-width: 50%;
-    }
-}
-.h3-cor{
-    color: #f9a602;
-}
-.variantes-container{
-    margin-top: 20px;
-}
-.options-container{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-.option{
-    border: 1px solid #ccc;
-    padding: 10px;
-    width: 200px;
-}
-.option img{
-    width: 100%;
-    height: auto;
-}
-.img-platform{
-    width: 100%;
-    height: auto;
-    max-width: 150px;
-    display: block;
-    margin: 0 auto;
+.img-platform:hover {
+    transform: scale(1.1);
 }

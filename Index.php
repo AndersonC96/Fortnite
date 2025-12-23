@@ -1,55 +1,107 @@
-<?php $pageTitle = 'Home - Fortnite Tracker'; include 'header.php'; ?>
+<?php 
+$pageTitle = 'Home - Fortnite Hub'; 
+include 'header.php'; 
+include 'apiConfig.php';
+?>
 
-<div class="container mt-5 pt-5">
-    <div class="text-center mb-5">
-        <h1 class="display-3 text-white" style="text-shadow: 0 0 20px rgba(0,0,0,0.8);">Bem-vindo ao <span class="text-gradient">Fortnite Hub</span></h1>
-        <p class="lead text-light">Sua fonte definitiva para Loja, Notícias e Status.</p>
-    </div>
-
-    <!-- Multi-Search Bar -->
-    <div class="row justify-content-center mb-5">
-        <div class="col-md-8">
-            <form class="input-group glass-card p-2" action="cosmeticos.php" method="GET">
-                <input type="text" name="query" class="form-control bg-transparent border-0 text-white" placeholder="Buscar cosmético..." style="font-family: 'Inter', sans-serif;">
-                <div class="input-group-append">
-                    <button class="btn btn-fn" type="submit">Buscar</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- Bento Grid Dashboard -->
-    <div class="bento-grid">
-        <!-- Featured Shop Item -->
-        <div class="glass-card bento-item span-2">
-            <h3 class="h3-cor">Item em Destaque</h3>
-            <div class="d-flex align-items-center">
-                <div class="flex-grow-1">
-                    <p>Confira a loja de hoje atualizada em tempo real.</p>
-                    <a href="loja.php" class="btn btn-outline-light mt-3">Ver Loja Completa</a>
-                </div>
-                <!-- Placeholder for API image, using a static icon for now -->
-                <img src="./IMG/logo.png" style="opacity: 0.8; height: 100px;" alt="Shop Icon">
-            </div>
-        </div>
-
-        <!-- Latest News -->
-        <div class="glass-card bento-item">
-            <h3 class="text-primary">Últimas Notícias</h3>
-            <p>Fique por dentro das atualizações e patch notes.</p>
-            <a href="noticias.php" class="btn btn-sm btn-fn mt-auto">Ler Notícias</a>
-        </div>
-
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="hero-content">
+        <h1 class="hero-title">Fortnite Hub</h1>
+        <p class="hero-subtitle">
+            Sua central de informações para <span>Loja</span>, <span>Notícias</span> e <span>Cosméticos</span>
+        </p>
+        
+        <!-- Search Box -->
+        <form class="search-box" action="cosmeticos.php" method="GET">
+            <input type="text" name="query" placeholder="🔍 Buscar cosméticos, skins, emotes...">
+            <button type="submit">Buscar</button>
+        </form>
+        
         <!-- Server Status -->
-        <div class="glass-card bento-item">
-            <h3 class="text-success">Status do Servidor</h3>
-            <div class="d-flex align-items-center mt-2">
-                <div style="width: 15px; height: 15px; background: #00ff00; border-radius: 50%; box-shadow: 0 0 10px #00ff00;"></div>
-                <span class="ml-2">Online</span>
-            </div>
-            <a href="status.php" class="btn btn-sm btn-outline-light mt-4">Detalhes</a>
+        <div class="status-indicator">
+            <span class="status-dot"></span>
+            <span>Servidores Online</span>
         </div>
     </div>
-</div>
+</section>
+
+<!-- Features Section -->
+<section class="container-fn" style="margin-top: -60px; position: relative; z-index: 10;">
+    <div class="features-grid">
+        
+        <!-- Shop Card -->
+        <div class="feature-card">
+            <div class="feature-icon">🛒</div>
+            <h3>Loja Diária</h3>
+            <p>Confira todos os itens disponíveis na loja de hoje em tempo real.</p>
+            <a href="loja.php" class="btn-fn">Ver Loja</a>
+        </div>
+        
+        <!-- News Card -->
+        <div class="feature-card">
+            <div class="feature-icon">📰</div>
+            <h3>Últimas Notícias</h3>
+            <p>Fique por dentro das atualizações, eventos e patch notes.</p>
+            <a href="noticias.php" class="btn-fn">Ver Notícias</a>
+        </div>
+        
+        <!-- Cosmetics Card -->
+        <div class="feature-card">
+            <div class="feature-icon">✨</div>
+            <h3>Cosméticos</h3>
+            <p>Explore todos os cosméticos disponíveis no jogo.</p>
+            <a href="cosmeticos.php" class="btn-fn">Explorar</a>
+        </div>
+        
+        <!-- Platforms Card -->
+        <div class="feature-card">
+            <div class="feature-icon">🎮</div>
+            <h3>Plataformas</h3>
+            <p>Descubra onde jogar Fortnite e baixe o jogo.</p>
+            <a href="plataformas.php" class="btn-fn">Ver Plataformas</a>
+        </div>
+        
+    </div>
+</section>
+
+<!-- Live Shop Preview -->
+<section class="container-fn" style="margin-top: 80px;">
+    <h2 style="text-align: center; margin-bottom: 40px;">
+        <span class="text-gradient">🔥 Destaques da Loja</span>
+    </h2>
+    
+    <div class="items-grid" style="max-width: 1000px; margin: 0 auto;">
+        <?php
+        $storeData = callFortniteAPI('shop/br');
+        $count = 0;
+        if($storeData && $storeData['status'] == 200 && !empty($storeData['data']['featured']['entries'])){
+            foreach($storeData['data']['featured']['entries'] as $entry){
+                if($count >= 4) break; // Limit to 4 items
+                
+                $imageUrl = $entry['bundle']['image'] ?? ($entry['newDisplayAsset']['materialInstances'][0]['images']['Background'] ?? './IMG/logo.png');
+                $itemName = $entry['bundle']['name'] ?? 'Item';
+                $finalPrice = $entry['finalPrice'] ?? 0;
+                
+                echo "<div class='item-card rarity-legendary'>";
+                echo "<img src='" . htmlspecialchars($imageUrl, ENT_QUOTES, 'UTF-8') . "' alt='" . htmlspecialchars($itemName) . "'>";
+                echo "<div class='card-body'>";
+                echo "<h5 class='card-title'>" . htmlspecialchars($itemName, ENT_QUOTES, 'UTF-8') . "</h5>";
+                echo "<p class='card-text'>💰 " . number_format($finalPrice, 0, ',', '.') . " V-Bucks</p>";
+                echo "</div>";
+                echo "</div>";
+                
+                $count++;
+            }
+        } else {
+            echo "<p style='text-align: center; grid-column: 1/-1;'>Carregando itens da loja...</p>";
+        }
+        ?>
+    </div>
+    
+    <div style="text-align: center; margin-top: 40px;">
+        <a href="loja.php" class="btn-fn btn-fn-outline">Ver Loja Completa →</a>
+    </div>
+</section>
 
 <?php include 'footer.php'; ?>
